@@ -1,4 +1,3 @@
-
 // Format the form using CodeMirror
 var editor = CodeMirror.fromTextArea(document.getElementById("sql"), {
     mode: "text/x-sql",
@@ -13,8 +12,16 @@ var editor = CodeMirror.fromTextArea(document.getElementById("sql"), {
 // intercept form submissions
 document.querySelector('form').addEventListener('submit', function (event) {
   event.preventDefault();
-  modifyDiv();
+  var mysql = document.getElementById('sql').value;
+  runSQL(mysql);
+  modifyDiv(mysql);
 });
+
+// allows for modifying the content of the "sqlResult"
+function modifyDiv(newContent) {
+  document.getElementById("sqlResult").innerHTML = newContent;
+  return 0;
+}
 
 // Changes editor content with use of button
 function changeTextAreaContent(contentNumber) {
@@ -27,7 +34,5 @@ function changeTextAreaContent(contentNumber) {
           newContent = "Please specify a valid number";
           console.log(contentNumber);
       }
-    // var textarea = document.getElementById("sql");
-    // textarea.value = newContent;
     editor.setValue(newContent);
 }

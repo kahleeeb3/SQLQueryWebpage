@@ -8,14 +8,6 @@
     <link rel="stylesheet" href="./src/css/style.css" />
     <?php include './src/php/functions.php'; ?>
 
-    <script>
-        function modifyDiv() {
-            var mysql = document.getElementById('sql').value;
-            document.getElementById("sqlResult").innerHTML = mysql;
-            return 0;
-        }
-    </script>
-
     <!-- Code Mirror https://codemirror.net/5/index.html -->
     <link rel="stylesheet" href="./src/codeMirror/lib/codemirror.css">
     <script src="./src/codeMirror/lib/codemirror.js"></script>
@@ -34,7 +26,9 @@
     <div class="body">
         <div class="left">
             <h2>Database: cmp0132</h2>
-            <button onclick="changeTextAreaContent(0)">Change Text Area Content</button>
+            <button onclick="changeTextAreaContent(0)">Show All Tables</button>
+            <button onclick="changeTextAreaContent(0)">Show All Tables</button>
+            <button onclick="changeTextAreaContent(0)">Show All Tables</button>
         </div>
         <div class="right">
 
