@@ -3,7 +3,10 @@
 
 <head>
     <title>SQL Query</title>
+
+    <!-- My js and php files -->
     <link rel="stylesheet" href="./src/css/style.css" />
+    <?php include './src/php/functions.php'; ?>
 
     <!-- Code Mirror https://codemirror.net/5/index.html -->
     <link rel="stylesheet" href="./src/codeMirror/lib/codemirror.css">
@@ -23,30 +26,23 @@
     <div class="body">
         <div class="left">
             <h2>Database: cmp0132</h2>
+            <button onclick="changeTextAreaContent(0)">Change Text Area Content</button>
         </div>
         <div class="right">
 
-            <form method="POST">
-                <textarea name="sql" id="sql"></textarea>
+            <form action="./src/php/submit_sql.php" method="post">
+                <textarea name="sql_statement" id="sql"></textarea>
                 <input type="submit" value="Run SQL">
             </form>
 
-            <script>
-                var editor = CodeMirror.fromTextArea(document.getElementById("sql"), {
-                    mode: "text/x-sql",
-                    theme: "material-darker",
-                    indentWithTabs: true,
-                    smartIndent: true,
-                    lineNumbers: true,
-                    matchBrackets: true,
-                    autofocus: true
-                });
-            </script>
-
-
-
-
+            <script src="./src/js/myscript.js"></script>
         </div>
+    </div>
+
+    <!-- RESULTS WILL GO HERE -->
+    <div id="sqlResult">
+        <!-- <?php echo csv_to_html_table('./data/db_book.csv'); ?> -->
+        <?php echo "HELLO"; ?>
     </div>
 
 
