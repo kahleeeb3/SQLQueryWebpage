@@ -1,7 +1,42 @@
-table, th, td {
-    border:1px solid black;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-div{
-    padding: 10px 0px;
+div.header {
+    background-color: rgb(232, 119, 34);
+    width: 100%;
+    /* font-size: 30px; */
+    padding: 1% 5%;
+}
+
+.body {
+    width: 100%;
+}
+
+.left {
+    margin-left: 5%;
+    width: 25%;
+    float: left;
+    background: green;
+}
+
+.right {
+    margin: 0% 5%;
+    width: 60%;
+    float: left;
+    background: blue;
+}
+
+.background {
+    /* background-color: rgb(71, 71, 71); */
+    background-color: rgb(12, 35, 64);
+
+}
+
+/* TABLE FORMAT */
+table,
+th,
+td {
+    border: 1px solid black;
 }
