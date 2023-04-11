@@ -13,7 +13,6 @@ var editor = CodeMirror.fromTextArea(document.getElementById("sql"), {
 document.querySelector('form').addEventListener('submit', function (event) {
   event.preventDefault();
   var mysql = document.getElementById('sql').value;
-  runSQL(mysql);
   modifyDiv(mysql);
 });
 
