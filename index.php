@@ -3,14 +3,14 @@
 
 <head>
     <title>SQL Query</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- <?php include 'functions.php'; ?>
+    <link rel="stylesheet" href="/src/css/style.css" />
+    <?php include '/src/php/functions.php'; ?>
     <script>
         function modifyDiv(){
             document.getElementById("myDiv").innerHTML = 
-            "<?php echo csv_to_html_table('data/db_book.csv'); ?>";
+            "<?php echo csv_to_html_table('/data/db_book.csv'); ?>";
         }
-    </script> -->
+    </script>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
 
     <h3>Queries Input</h3>
     <div id="query-submit">
-        <form action="submit_sql.php" method="post">
+        <form action="/src/php/submit_sql.php" method="post">
             <textarea name="sql_statement" rows="5" cols="40"></textarea><br><br>
             <input type="submit" value="Submit">
             <input type="submit" value="Clear">
@@ -50,7 +50,7 @@
     </div>
 
     
-    <?php echo csv_to_html_table('data/db_book.csv'); ?>
+    <?php echo csv_to_html_table('/data/db_book.csv'); ?>
 
 
     <h3>Required Queries</h3>
