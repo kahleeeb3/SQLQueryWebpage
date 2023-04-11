@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="./src/css/style.css" />
     <?php include './src/php/functions.php'; ?>
 
+    <script>
+        function modifyDiv() {
+            var mysql = document.getElementById('sql').value;
+            document.getElementById("sqlResult").innerHTML = mysql;
+            return 0;
+        }
+    </script>
+
     <!-- Code Mirror https://codemirror.net/5/index.html -->
     <link rel="stylesheet" href="./src/codeMirror/lib/codemirror.css">
     <script src="./src/codeMirror/lib/codemirror.js"></script>
@@ -30,21 +38,25 @@
         </div>
         <div class="right">
 
-            <form action="./src/php/submit_sql.php" method="post">
+            <!-- <form action="./src/php/submit_sql.php" method="post">
+                <textarea name="sql_statement" id="sql"></textarea>
+                <input type="submit" value="Run SQL">
+            </form> -->
+
+            <form method="post">
                 <textarea name="sql_statement" id="sql"></textarea>
                 <input type="submit" value="Run SQL">
             </form>
-
+            <!-- Specify what to do with form -->
             <script src="./src/js/myscript.js"></script>
         </div>
     </div>
 
     <!-- RESULTS WILL GO HERE -->
-    <div id="sqlResult">
-        <!-- <?php echo csv_to_html_table('./data/db_book.csv'); ?> -->
-        <?php echo "HELLO"; ?>
+    <div class="resultContainer">
+        <h2>Display Submission Results</h2>
+        <div id="sqlResult"></div>
     </div>
-
 
 </body>
 

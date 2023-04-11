@@ -5,7 +5,6 @@
  * This function takes a url to a CSV file and displays
  * that CSV file as an HTML Element
  */
-
 function csv_to_html_table($csv_file) {
     // Read in the CSV file
     $data = array();
