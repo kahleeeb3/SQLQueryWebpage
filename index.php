@@ -5,10 +5,11 @@
     <title>SQL Query</title>
     <link rel="stylesheet" href="./src/css/style.css" />
 
-    <!-- Code Syntax Highlighting -->
-    <link rel="stylesheet" href="./src/css/prism.css" />
-    <script src="./src/js/prism.js"></script>
-
+    <!-- Code Mirror https://codemirror.net/5/index.html -->
+    <link rel="stylesheet" href="./src/codeMirror/lib/codemirror.css">
+    <script src="./src/codeMirror/lib/codemirror.js"></script>
+    <script src="./src/codeMirror/mode/sql/sql.js"></script>
+    <link rel="stylesheet" href="./src/codeMirror/theme/material-darker.css">
 
 </head>
 
@@ -25,13 +26,23 @@
         </div>
         <div class="right">
 
-            <div>
-                <pre>
-                    <code class="language-sql" contenteditable="true" id="editable-code">
-                    SELECT * FROM Customer
-                    </code>
-                </pre>
-            </div>
+            <form method="POST">
+                <textarea name="sql" id="sql"></textarea>
+                <input type="submit" value="Run SQL">
+            </form>
+
+            <script>
+                var editor = CodeMirror.fromTextArea(document.getElementById("sql"), {
+                    mode: "text/x-sql",
+                    theme: "material-darker",
+                    indentWithTabs: true,
+                    smartIndent: true,
+                    lineNumbers: true,
+                    matchBrackets: true,
+                    autofocus: true
+                });
+            </script>
+
 
 
 
