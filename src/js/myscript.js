@@ -9,22 +9,6 @@ var editor = CodeMirror.fromTextArea(document.getElementById("sql"), {
     autofocus: true
 });
 
-<<<<<<< HEAD
-=======
-// intercept form submissions
-document.querySelector('form').addEventListener('submit', function (event) {
-  event.preventDefault();
-  var mysql = document.getElementById('sql').value;
-  modifyDiv(mysql);
-});
-
-// allows for modifying the content of the "sqlResult"
-function modifyDiv(newContent) {
-  document.getElementById("sqlResult").innerHTML = newContent;
-  return 0;
-}
-
->>>>>>> 1b835e61543912f8fca06aefbff3b4cc5ece8984
 // Changes editor content with use of button
 function changeTextAreaContent(contentNumber) {
     var newContent; // where the new content will be stored

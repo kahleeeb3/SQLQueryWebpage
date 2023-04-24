@@ -32,23 +32,10 @@
         </div>
         <div class="right">
 
-<<<<<<< HEAD
             <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
                 <textarea name="sql_statement" id="sql"></textarea>
                 <input type="submit" value="Run SQL">
             </form>
-=======
-            <!-- <form action="./src/php/submit_sql.php" method="post">
-                <textarea name="sql_statement" id="sql"></textarea>
-                <input type="submit" value="Run SQL">
-            </form> -->
-
-            <form method="post">
-                <textarea name="sql_statement" id="sql"></textarea>
-                <input type="submit" value="Run SQL">
-            </form>
-            <!-- Specify what to do with form -->
->>>>>>> 1b835e61543912f8fca06aefbff3b4cc5ece8984
             <script src="./src/js/myscript.js"></script>
         </div>
     </div>
@@ -56,7 +43,6 @@
     <!-- RESULTS WILL GO HERE -->
     <div class="resultContainer">
         <h2>Display Submission Results</h2>
-<<<<<<< HEAD
         <div id="sqlResult">
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -81,9 +67,6 @@
         <?php echo csv_to_html_table('./data/db_employee.csv', "Employee"); ?>
         <?php echo csv_to_html_table('./data/db_shipper.csv', "Shipper"); ?>
         <?php echo csv_to_html_table('./data/db_subject.csv', "Subject"); ?>
-=======
-        <div id="sqlResult"></div>
->>>>>>> 1b835e61543912f8fca06aefbff3b4cc5ece8984
     </div>
 
 </body>
