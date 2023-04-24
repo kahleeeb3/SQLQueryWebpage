@@ -1,7 +1,16 @@
 <?php
 
+<<<<<<< HEAD
 // convert CSV file to an HTML Table
 function csv_to_html_table($csv_file, $table_name) {
+=======
+
+/*
+ * This function takes a url to a CSV file and displays
+ * that CSV file as an HTML Element
+ */
+function csv_to_html_table($csv_file) {
+>>>>>>> 1b835e61543912f8fca06aefbff3b4cc5ece8984
     // Read in the CSV file
     $data = array();
     if (($handle = fopen($csv_file, 'r')) !== FALSE) {
