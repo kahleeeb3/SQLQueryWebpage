@@ -36,6 +36,7 @@
                 <textarea name="sql_statement" id="sql"></textarea>
                 <input type="submit" value="Run SQL">
             </form>
+            <!--Used for code syntax highlighting-->
             <script src="./src/js/myscript.js"></script>
         </div>
     </div>
@@ -46,11 +47,9 @@
         <div id="sqlResult">
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    // Retrieve form data
-                    $sql_statement = $_POST['sql_statement'];
-
-                    // Display form data without sanitizing
-                    echo "<p>$sql_statement</p>";
+                    $sql_statement = $_POST['sql_statement']; // Retrieve form data
+                    $sql_result = queryMySQL("$sql_statement"); // process query
+                    echo "<p>$sql_result</p>"; // display results
                 }
             ?>
         </div>

@@ -45,27 +45,26 @@ function queryMySQL($sql_statement){
     }
 
     // execute the SQL statement and fetch the results
-    $result = mysqli_query($conn, $sql_statement);
+    $result = mysqli_query($conn, $sql_statement); // store results
+    mysqli_close($conn); // close connection
+    $result_string = "";
 
-
-    // // check if the query returned any rows
-    // if (mysqli_num_rows($result) > 0) {
-    //     // output the results as text
-    //     while ($row = mysqli_fetch_assoc($result)) {
-    //         foreach ($row as $key => $value) {
-    //             echo $key . ": " . $value . "\n";
-    //         }
-    //         echo "\n";
-    //     }
-    // } else {
-    //     echo "No results found";
-    // }
-
-    // close the database connection
-    mysqli_close($conn);
-
-    // return
-    return $result;
+    // check if the query returned any rows
+    if (mysqli_num_rows($result) > 0) {
+        // return "Results Found";
+        // output the results as text
+        while ($row = mysqli_fetch_assoc($result)) {
+            foreach ($row as $key => $value) {
+                $result_string .= $key . ": " . $value . "\n";
+            }
+            $result_string .= "\n";
+        }
+        return $result_string;
+    } 
+    else {
+        return "No Results Found";
+    }
+    
 }
 
 ?>
