@@ -60,7 +60,20 @@ function queryMySQL($sql_statement){
         // strpos() finds the first occurance of a substring. False if none
         $message = "Query executed successfully";
         if (strpos($sql_statement, 'CREATE TABLE') !== false) {
-            $message = "Table created successfully";
+            // https://www.php.net/manual/en/function.preg-match.php
+            // backward slash indicates start, forward slash indicates end
+            // \s     Any whitespace character
+            // \S     Any non-whitespace character
+            preg_match('/CREATE TABLE\s+(\S+)/', $sql_statement, $matches);
+            $table_name = $matches[1]; // get name of table
+            $allowed_tables = array("Books", "Customers", "Employees", "OrderDetails", "Orders", "Shippers", "Subjects", "Suppliers");
+            if(in_array($table_name, $allowed_tables)){
+                $message = $table_name . " table created successfully";
+            }
+            else{
+                $message = $table_name . " table is not allowed. Please create a valid table.";
+            }
+            return $message;
         } 
         elseif (strpos($sql_statement, 'DROP TABLE') !== false) {
             $message = "Table dropped successfully";
