@@ -65,7 +65,7 @@
     </div>
 
     <div class="tableList">
-        <h2>Tables</h2>
+        <h2>Table CSV Data</h2>
         <?php echo csv_to_html_table('./data/db_order_detail.csv', "OrderDetails"); ?>
         <?php echo csv_to_html_table('./data/db_book.csv', "Books"); ?>
         <?php echo csv_to_html_table('./data/db_order.csv', "Orders"); ?>
