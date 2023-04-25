@@ -32,6 +32,36 @@ function csv_to_html_table($csv_file, $table_name) {
 // https://www.w3schools.com/php/php_mysql_connect.asp
 function queryMySQL($sql_statement){
 
+    
+    // check for create or drop
+    // strpos() finds the first occurance of a substring. False if none
+    if (strpos($sql_statement, 'CREATE TABLE') !== false) {
+        // https://www.php.net/manual/en/function.preg-match.php
+        // backward slash indicates start, forward slash indicates end
+        // \s     Any whitespace character
+        // \S     Any non-whitespace character
+        preg_match('/CREATE TABLE\s+(\S+)/', $sql_statement, $matches);
+        $table_name = $matches[1]; // get name of table
+        $allowed_tables = array("Books", "Customers", "Employees", "OrderDetails", "Orders", "Shippers", "Subjects", "Suppliers"); // list of allowed tables
+        
+        // if not allowed
+        if(!in_array($table_name, $allowed_tables)){
+            $message = $table_name . " table is not allowed. Please create a valid table.";
+            die($message); // kill process
+        }
+    } 
+    elseif (strpos($sql_statement, 'DROP TABLE') !== false) {
+        // determine if drops are allowed or not
+        $drops_allowed = false; // set drops as disallowed
+        // $drops_allowed = true; // set drops as allowed
+        if(!$drops_allowed){
+            $message = "DROPS ARE NOT ALLOWED";
+            die($message);
+        }
+        
+    }
+    
+    
     // connect to the MySQL database
     $servername = "sysmysql8.auburn.edu";
     $username = "cmp0132";
@@ -55,37 +85,15 @@ function queryMySQL($sql_statement){
         return $error_message;
     }
     
-    // check for create or drop
+    // submitted with no errors
     if ($result === true) {
-        // strpos() finds the first occurance of a substring. False if none
         $message = "Query executed successfully";
         if (strpos($sql_statement, 'CREATE TABLE') !== false) {
-            // https://www.php.net/manual/en/function.preg-match.php
-            // backward slash indicates start, forward slash indicates end
-            // \s     Any whitespace character
-            // \S     Any non-whitespace character
-            preg_match('/CREATE TABLE\s+(\S+)/', $sql_statement, $matches);
-            $table_name = $matches[1]; // get name of table
-            $allowed_tables = array("Books", "Customers", "Employees", "OrderDetails", "Orders", "Shippers", "Subjects", "Suppliers");
-            if(in_array($table_name, $allowed_tables)){
-                $message = $table_name . " table created successfully";
-            }
-            else{
-                $message = $table_name . " table is not allowed. Please create a valid table.";
-            }
+            $message = $table_name . " table created successfully";
             return $message;
         } 
         elseif (strpos($sql_statement, 'DROP TABLE') !== false) {
-            // determine if drops are allowed or not
-            $drops_allowed = false;
-            if(!$drops_allowed){
-                $message = "DROPS ARE NOT ALLOWED";
-                mysqli_close($conn);
-                die($message); // kill the query
-            }
-            else{
-                $message = "Table dropped successfully";
-            }
+            $message = "Table dropped successfully";
             
         }
         mysqli_close($conn);
