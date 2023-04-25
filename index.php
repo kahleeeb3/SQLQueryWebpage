@@ -27,8 +27,9 @@
         <div class="left">
             <h2>Database: cmp0132</h2>
             <button onclick="changeTextAreaContent(0)">Create Tables</button>
-            <button onclick="changeTextAreaContent(1)">Show All Tables</button>
-            <button onclick="changeTextAreaContent(2)">Show Books</button>
+            <button onclick="changeTextAreaContent(1)">Show Tables Names</button>
+            <button onclick="changeTextAreaContent(4)">Insert Table Data</button>
+            <button onclick="changeTextAreaContent(2)">Show All Table Data</button>
             <button onclick="changeTextAreaContent(3)">Drop All Tables</button>
         </div>
         <div class="right">
@@ -49,12 +50,14 @@
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $sql_statement = $_POST['sql_statement']; // Retrieve form data
+                    $sql_statement = stripslashes($sql_statement); // remove slashes
                     $queries = explode(';', $sql_statement); // split into multiple queries
                     $queries = array_filter($queries); // Remove any empty queries
                     // submit each query individually
                     foreach ($queries as $query) {
                         $sql_result = queryMySQL("$query;"); // process query
                         echo "<p>$sql_result</p>"; // display results
+                        // echo "<p>$sql_statement</p>"; // display query as text
                     }
                 }
             ?>
@@ -63,15 +66,14 @@
 
     <div class="tableList">
         <h2>Tables</h2>
-        <?php echo csv_to_html_table('./data/db_order_detail.csv', "Order Detail"); ?>
-        <?php echo csv_to_html_table('./data/db_book.csv', "Book"); ?>
-        <?php echo csv_to_html_table('./data/db_order.csv', "Order"); ?>
-        <?php echo csv_to_html_table('./data/db_supplier.csv',"Supplier"); ?>
-
-        <?php echo csv_to_html_table('./data/db_customer.csv', "Customer"); ?>
-        <?php echo csv_to_html_table('./data/db_employee.csv', "Employee"); ?>
-        <?php echo csv_to_html_table('./data/db_shipper.csv', "Shipper"); ?>
-        <?php echo csv_to_html_table('./data/db_subject.csv', "Subject"); ?>
+        <?php echo csv_to_html_table('./data/db_order_detail.csv', "OrderDetails"); ?>
+        <?php echo csv_to_html_table('./data/db_book.csv', "Books"); ?>
+        <?php echo csv_to_html_table('./data/db_order.csv', "Orders"); ?>
+        <?php echo csv_to_html_table('./data/db_supplier.csv',"Suppliers"); ?>
+        <?php echo csv_to_html_table('./data/db_customer.csv', "Customers"); ?>
+        <?php echo csv_to_html_table('./data/db_employee.csv', "Employees"); ?>
+        <?php echo csv_to_html_table('./data/db_shipper.csv', "Shippers"); ?>
+        <?php echo csv_to_html_table('./data/db_subject.csv', "Subjects"); ?>
     </div>
 
 </body>
