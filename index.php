@@ -28,7 +28,7 @@
             <h2>Database: cmp0132</h2>
             <button onclick="changeTextAreaContent(0)">Show All Tables</button>
             <button onclick="changeTextAreaContent(0)">Show All Tables</button>
-            <button onclick="changeTextAreaContent(0)">Show All Tables</button>
+            <button onclick="changeTextAreaContent(1)">Show Books</button>
         </div>
         <div class="right">
 

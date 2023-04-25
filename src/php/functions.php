@@ -46,20 +46,32 @@ function queryMySQL($sql_statement){
 
     // execute the SQL statement and fetch the results
     $result = mysqli_query($conn, $sql_statement); // store results
+    // Documentation on "result": https://www.php.net/manual/en/class.mysqli-result.php
     mysqli_close($conn); // close connection
-    $result_string = "";
 
     // check if the query returned any rows
     if (mysqli_num_rows($result) > 0) {
-        // return "Results Found";
-        // output the results as text
-        while ($row = mysqli_fetch_assoc($result)) {
-            foreach ($row as $key => $value) {
-                $result_string .= $key . ": " . $value . "\n";
-            }
-            $result_string .= "\n";
+        
+        $html = '<table>';
+
+        // Define table column headers
+        $html .= '<tr>';
+        $finfo = $result->fetch_fields(); // field info
+        foreach ($finfo as $val) {
+            $html .= '<th>'.$val->name.'</th>';
         }
-        return $result_string;
+        $html .= '</tr>';
+        
+        // get the row data
+        while ($row = $result->fetch_row()){
+            $html .= '<tr>';
+            foreach ($row as $cell) {
+                $html .= '<td>'.$cell.'</td>';
+            }
+            $html .= '</tr>';
+        }
+        $html .= '</table>';
+        return $html;
     } 
     else {
         return "No Results Found";

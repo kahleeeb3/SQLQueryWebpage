@@ -16,6 +16,9 @@ function changeTextAreaContent(contentNumber) {
         case 0:
           newContent = 'SHOW TABLES;';
           break;
+        case 1:
+          newContent = 'SELECT * FROM Books;';
+          break;
         default:
           newContent = "Please specify a valid number";
           console.log(contentNumber);
