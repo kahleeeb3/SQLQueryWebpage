@@ -26,9 +26,10 @@
     <div class="body">
         <div class="left">
             <h2>Database: cmp0132</h2>
-            <button onclick="changeTextAreaContent(0)">Show All Tables</button>
-            <button onclick="changeTextAreaContent(0)">Show All Tables</button>
-            <button onclick="changeTextAreaContent(1)">Show Books</button>
+            <button onclick="changeTextAreaContent(0)">Create Tables</button>
+            <button onclick="changeTextAreaContent(1)">Show All Tables</button>
+            <button onclick="changeTextAreaContent(2)">Show Books</button>
+            <button onclick="changeTextAreaContent(3)">Drop All Tables</button>
         </div>
         <div class="right">
 
@@ -48,8 +49,13 @@
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $sql_statement = $_POST['sql_statement']; // Retrieve form data
-                    $sql_result = queryMySQL("$sql_statement"); // process query
-                    echo "<p>$sql_result</p>"; // display results
+                    $queries = explode(';', $sql_statement); // split into multiple queries
+                    $queries = array_filter($queries); // Remove any empty queries
+                    // submit each query individually
+                    foreach ($queries as $query) {
+                        $sql_result = queryMySQL("$query;"); // process query
+                        echo "<p>$sql_result</p>"; // display results
+                    }
                 }
             ?>
         </div>
