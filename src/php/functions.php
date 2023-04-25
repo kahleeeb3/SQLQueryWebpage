@@ -29,6 +29,7 @@ function csv_to_html_table($csv_file, $table_name) {
 }
 
 // Run SQL Query
+// https://www.w3schools.com/php/php_mysql_connect.asp
 function queryMySQL($sql_statement){
 
     // connect to the MySQL database
@@ -47,10 +48,30 @@ function queryMySQL($sql_statement){
     // execute the SQL statement and fetch the results
     $result = mysqli_query($conn, $sql_statement); // store results
     // Documentation on "result": https://www.php.net/manual/en/class.mysqli-result.php
-    mysqli_close($conn); // close connection
 
+    // check for errors in the query
+    if ($result === false) {
+        $error_message = "ERROR " . mysqli_errno($conn) . mysqli_error($conn) . "\n";
+        return $error_message;
+    }
+    
+    // check for create or drop
+    if ($result === true) {
+        // strpos() finds the first occurance of a substring. False if none
+        $message = "Query executed successfully";
+        if (strpos($sql_statement, 'CREATE TABLE') !== false) {
+            $message = "Table created successfully";
+        } 
+        elseif (strpos($sql_statement, 'DROP TABLE') !== false) {
+            $message = "Table dropped successfully";
+        }
+        mysqli_close($conn);
+        return $message;
+    }
+    
+    
     // check if the query returned any rows
-    if (mysqli_num_rows($result) > 0) {
+    elseif (mysqli_num_rows($result) > 0) {
         
         $html = '<table>';
 
@@ -71,12 +92,14 @@ function queryMySQL($sql_statement){
             $html .= '</tr>';
         }
         $html .= '</table>';
+        mysqli_close($conn); // close connection
         return $html;
     } 
+
     else {
-        return "No Results Found";
-    }
-    
+        mysqli_close($conn); // close connection
+        return "No rows returned from query.";
+    } 
 }
 
 ?>
