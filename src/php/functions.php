@@ -76,7 +76,17 @@ function queryMySQL($sql_statement){
             return $message;
         } 
         elseif (strpos($sql_statement, 'DROP TABLE') !== false) {
-            $message = "Table dropped successfully";
+            // determine if drops are allowed or not
+            $drops_allowed = false;
+            if(!$drops_allowed){
+                $message = "DROPS ARE NOT ALLOWED";
+                mysqli_close($conn);
+                die($message); // kill the query
+            }
+            else{
+                $message = "Table dropped successfully";
+            }
+            
         }
         mysqli_close($conn);
         return $message;
