@@ -31,6 +31,26 @@
             <button onclick="changeTextAreaContent(4)">Insert Table Data</button>
             <button onclick="changeTextAreaContent(2)">Show All Table Data</button>
             <button onclick="changeTextAreaContent(3)">Drop All Tables</button>
+            <h2>Queries:</h2>
+            <button onclick="changeTextAreaContent(5)">Question 1</button>
+            <button onclick="changeTextAreaContent(6)">Question 2</button>
+            <button onclick="changeTextAreaContent(7)">Question 3</button>
+            <button onclick="changeTextAreaContent(8)">Question 4</button>
+            <button onclick="changeTextAreaContent(9)">Question 5</button>
+            <button onclick="changeTextAreaContent(10)">Question 6</button>
+            <button onclick="changeTextAreaContent(11)">Question 7</button>
+            <button onclick="changeTextAreaContent(12)">Question 8</button>
+            <button onclick="changeTextAreaContent(13)">Question 9</button>
+            <button onclick="changeTextAreaContent(14)">Question 10</button>
+            <button onclick="changeTextAreaContent(15)">Question 11</button>
+            <button onclick="changeTextAreaContent(16)">Question 12</button>
+            <button onclick="changeTextAreaContent(17)">Question 13</button>
+            <button onclick="changeTextAreaContent(18)">Question 14</button>
+            <button onclick="changeTextAreaContent(19)">Question 15</button>
+            <button onclick="changeTextAreaContent(20)">Question 16</button>
+            <button onclick="changeTextAreaContent(21)">Question 17</button>
+            <button onclick="changeTextAreaContent(22)">Question 18</button>
+            <button onclick="changeTextAreaContent(23)">Question 19</button>
         </div>
         <div class="right">
 
@@ -64,7 +84,7 @@
         </div>
     </div>
 
-    <div class="tableList">
+    <!-- <div class="tableList">
         <h2>Table CSV Data</h2>
         <?php echo csv_to_html_table('./data/db_order_detail.csv', "OrderDetails"); ?>
         <?php echo csv_to_html_table('./data/db_book.csv', "Books"); ?>
@@ -74,7 +94,7 @@
         <?php echo csv_to_html_table('./data/db_employee.csv', "Employees"); ?>
         <?php echo csv_to_html_table('./data/db_shipper.csv', "Shippers"); ?>
         <?php echo csv_to_html_table('./data/db_subject.csv', "Subjects"); ?>
-    </div>
+    </div> -->
 
 </body>
 
