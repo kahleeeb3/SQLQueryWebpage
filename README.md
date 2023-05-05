@@ -5,8 +5,3 @@ use cmp0132db
 ```
 
 password: Calebmpowell3
-
-## Todo
-- create SQL statements
-- add check boxes for viewing the table Data
-- make look better
